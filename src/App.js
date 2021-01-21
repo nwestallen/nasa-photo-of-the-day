@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Gallery from "./components/Gallery"
-import Photo from "./components/Photo";
 import { BASE_URL, API_KEY } from './constants/index';
 import axios from 'axios';
+
+let today = new Date();
+const dd = String(today.getDate()).padStart(2, '0');
+const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+const yyyy = today.getFullYear();
+
+//today = `${yyyy}-${mm}-${dd}`
+today = '2020-02-26'
+
 
 const dummyData = {
   "date": "2021-01-20",
@@ -17,11 +25,12 @@ const dummyData = {
 
 
 function App() {
+  const [date, setDate] = useState(today)
   const [data, setData] = useState([])
 
   useEffect(() => {
     axios
-    .get(`${BASE_URL}?api_key=${API_KEY}`)
+    .get(`${BASE_URL}?api_key=${API_KEY}&date=${date}`)
     .then(res => {
       console.log(res)
       setData(res.data);
@@ -29,7 +38,11 @@ function App() {
     .catch(err => {
       console.log(err);
     })
-  }, []);
+  }, [date]);
+
+  const chooseDate = (choice) => {
+    setDate(choice);
+  };
 
 
   return (
@@ -38,6 +51,7 @@ function App() {
         Read through the instructions in the README.md file to build your NASA
         app! Have fun <span role="img" aria-label='go!'>🚀</span>!
       </p>
+      <button onClick={() => chooseDate('2020-02-27')}>Change!</button>
       <Gallery data={data} />
     </div>
   );
