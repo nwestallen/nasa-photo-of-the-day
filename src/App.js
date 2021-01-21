@@ -41,17 +41,14 @@ function App() {
   }, [date]);
 
   const chooseDate = (choice) => {
-    setDate(choice);
+    let dateChoice = choice.target.value;
+    setDate(dateChoice);
   };
 
 
   return (
     <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
-      <button onClick={() => chooseDate('2020-02-27')}>Change!</button>
+      <input type="date" onChange={chooseDate} />
       <Gallery data={data} />
     </div>
   );
