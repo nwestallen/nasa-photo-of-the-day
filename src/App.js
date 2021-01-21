@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Gallery from "./components/Gallery"
 import Photo from "./components/Photo";
 import { BASE_URL, API_KEY } from './constants/index';
 import axios from 'axios';
@@ -37,7 +38,7 @@ function App() {
         Read through the instructions in the README.md file to build your NASA
         app! Have fun <span role="img" aria-label='go!'>🚀</span>!
       </p>
-      <Photo url={data.url} caption={data.title} />
+      <Gallery data={data} />
     </div>
   );
 }
