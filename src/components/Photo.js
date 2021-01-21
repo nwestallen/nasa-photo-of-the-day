@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 
 export default function Photo(props) {
-    const { url } = props;
+    const { url, caption } = props;
     const [photoData, setPhotoData] = useState([]);
 
     if(!props.url) {
@@ -13,7 +13,7 @@ export default function Photo(props) {
     return (
         <div className='photoFrame'>
             <img src={props.url} alt='Danny' />
-            <p className='caption'>Danny Boy</p>
+            <p className='caption'>{props.caption}</p>
         </div>
     )
 }

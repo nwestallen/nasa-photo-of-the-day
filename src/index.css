@@ -14,9 +14,10 @@ code {
 
 .photoFrame {
   background-color: skyblue;
+  width: 150px;
   padding: 10px;
 }
 
 img {
-  width: 100px;
+  width: 125px;
 }
