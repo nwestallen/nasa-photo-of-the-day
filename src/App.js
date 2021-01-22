@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Gallery from "./components/Gallery"
+import Banner from "./components/Banner"
 import { BASE_URL, API_KEY } from './constants/index';
 import axios from 'axios';
 
@@ -48,6 +49,7 @@ function App() {
 
   return (
     <div className="App">
+        <Banner />
       <input type="date" onChange={chooseDate} />
       <Gallery data={data} />
     </div>

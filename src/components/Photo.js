@@ -22,10 +22,15 @@ export default function Photo(props) {
     padding: 1rem;
     `;
 
+    const PhotoCaption = styled.p`
+    word-wrap: normal;
+    max-width: 200px;
+    `;
+
     return (
         <PhotoFrame>
             <Picture src={props.url} alt='Danny' />
-            <p className='caption'>{props.caption}</p>
+            <PhotoCaption className='caption'>{props.caption}</PhotoCaption>
         </PhotoFrame>
     )
 }
