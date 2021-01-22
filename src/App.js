@@ -11,7 +11,7 @@ const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 const yyyy = today.getFullYear();
 
 //today = `${yyyy}-${mm}-${dd}`
-today = '2020-02-26'
+today = '2021-01-03'
 
 
 const dummyData = {
@@ -26,12 +26,12 @@ const dummyData = {
 
 
 function App() {
-  const [date, setDate] = useState(today)
+  const [photoDate, setPhotoDate] = useState(today)
   const [data, setData] = useState([])
 
   useEffect(() => {
     axios
-    .get(`${BASE_URL}?api_key=${API_KEY}&date=${date}`)
+    .get(`${BASE_URL}?api_key=${API_KEY}&start_date=2021-01-01&end_date=${photoDate}`)
     .then(res => {
       console.log(res)
       setData(res.data);
@@ -39,18 +39,19 @@ function App() {
     .catch(err => {
       console.log(err);
     })
-  }, [date]);
+  }, [photoDate]);
 
   const chooseDate = (choice) => {
     let dateChoice = choice.target.value;
-    setDate(dateChoice);
+    setPhotoDate(dateChoice);
   };
 
 
   return (
     <div className="App">
-        <Banner />
-      <input type="date" onChange={chooseDate} />
+      <Banner />
+      <label htmlFor="datepicker">Choose End Date:    </label>
+      <input id="datepicker" type="date" onChange={chooseDate} />
       <Gallery data={data} />
     </div>
   );

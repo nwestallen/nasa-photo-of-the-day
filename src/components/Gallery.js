@@ -9,9 +9,9 @@ export default function Gallery(props) {
 
     const GallerySection = styled.section`
     display: flex;
-    flex-flow: row-wrap;
+    flex-flow: row wrap;
     justify-content: space-evenly;
-    max-height: 510px;
+    max-height: 1020px;
     width: 90%;
     overflow: auto;
     background-color: #242729;
@@ -21,7 +21,7 @@ export default function Gallery(props) {
 
     return (
        <GallerySection>
-           {[1,2,3].map(itm => <Photo url={data.url} caption={data.title} />)}
+           {data.map(itm => <Photo url={itm.url} caption={itm.title} />)}
        </GallerySection>
     );
 }
