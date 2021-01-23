@@ -6,7 +6,7 @@ export default function Banner() {
     const logoURL = 'https://www.nasa.gov/sites/default/files/styles/side_image/public/thumbnails/image/nasa-logo-web-rgb.png?itok=uDhKSTb1';
 
     const StyledHeader = styled.header`
-        background-color: black;
+        background-color: ${pr => pr.theme.darkestBlue};
         display: flex;
         align-items: center;
         height: 100px;
