@@ -17,8 +17,9 @@ export default function Photo(props) {
     `;
 
     const PhotoFrame = styled.div`
-    background-color: gray;
-    margin: 1rem 0.25rem;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0;
     padding: 1rem;
     `;
 

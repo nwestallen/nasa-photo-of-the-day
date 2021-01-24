@@ -5,23 +5,34 @@ import styled from 'styled-components';
 import Photo from "./Photo";
 
 export default function Gallery(props) {
-    const { data }= props
+    const { data, chooseDate }= props
 
-    const GallerySection = styled.section`
+    const CalendarSection = styled.section`
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     max-height: 1020px;
-    width: 90%;
+    width: 100%;
     overflow: auto;
-    background-color: #242729;
+    background-color: ${pr => pr.theme.darkerBlue};
+    margin: auto;
+    `;
+
+    const WhiteSpace = styled.div`
+    display: flex;
+    flex-flow: column;
+    width: 1400px;
     margin: auto;
     `;
 
 
     return (
-       <GallerySection>
+    <WhiteSpace>
+        <label htmlFor="datepicker">Choose End Date:    </label>
+        <input id="datepicker" type="date" onChange={chooseDate} />
+       <CalendarSection>
            {data.map(itm => <Photo url={itm.url} caption={itm.title} />)}
-       </GallerySection>
+       </CalendarSection>
+    </WhiteSpace>
     );
 }

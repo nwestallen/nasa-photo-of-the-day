@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Gallery from "./components/Gallery"
 import Banner from "./components/Banner"
+import Calendar from "./components/Calendar"
 import { BASE_URL, API_KEY } from './constants/index';
 import axios from 'axios';
 
@@ -11,7 +12,7 @@ const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 const yyyy = today.getFullYear();
 
 //today = `${yyyy}-${mm}-${dd}`
-today = '2021-01-03'
+today = '2020-07-03'
 
 
 const dummyData = {
@@ -50,9 +51,8 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <label htmlFor="datepicker">Choose End Date:    </label>
-      <input id="datepicker" type="date" onChange={chooseDate} />
-      <Gallery data={data} />
+      <Gallery data={data} chooseDate={chooseDate}/>
+      <Calendar targetDate={today}/>
     </div>
   );
 }
