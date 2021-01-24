@@ -14,19 +14,20 @@ const Calendar = (props) => {
     for (let i = 1; i <= lastDay.getDate(); i++) {
         monthDates.push(new Date(year, month, i));
     }
+    const displayDates = [...monthDates].map(monthDate => monthDate.toDateString());
     for(let i =0; i < firstDay.getDay(); i ++) {
-        monthDates.unshift(goodDate);
+        displayDates.unshift('');
     }
 
     const CalendarArea = styled.div`
         display: flex;
         flex-flow: row wrap;
-        position: relative;
     `;
 
     const CalendarSquare = styled.div`
+        position: relative;
         width: 14%;
-        margin: 2px 0px;
+        margin: 2px 0;
        :before {
            content: '';
            display: block;
@@ -34,9 +35,29 @@ const Calendar = (props) => {
        }
     `;
 
+    const WeekSquare = styled.div`
+        position: relative;
+        width: 14%;
+        margin: 2px 0;
+        :before {
+            content: '';
+            display: block;
+            padding-top: 20%;
+        }
+    `;
+
     const SquareContent = styled.div`
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
           background: #333;
           color: #fff;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
           /*   display: flex;
           align-items: center; */
           height: 100%;
@@ -51,15 +72,16 @@ const Calendar = (props) => {
     return (
         <CalendarArea>
             {['Sun','Mon','Tue','Wed','Thur','Fri','Sat'].map(weekDay =>
-                <CalendarSquare>
-                    <SquareContent>
-                        {weekDay}
-                    </SquareContent>
-                </CalendarSquare>)}
-            {monthDates.map(monthDate => 
+            <WeekSquare>
+                <SquareContent>
+                    {weekDay}
+                </SquareContent>
+            </WeekSquare>
+                )}
+            {displayDates.map(monthDate => 
             <CalendarSquare>
                 <SquareContent>
-                    {monthDate.toDateString()}
+                    {monthDate}
                 </SquareContent>
             </CalendarSquare>)}
         </CalendarArea>

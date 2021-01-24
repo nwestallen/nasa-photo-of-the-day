@@ -12,7 +12,7 @@ const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 const yyyy = today.getFullYear();
 
 //today = `${yyyy}-${mm}-${dd}`
-today = '2020-07-03'
+today = '2021-01-03'
 
 
 const dummyData = {
@@ -52,7 +52,7 @@ function App() {
     <div className="App">
       <Banner />
       <Gallery data={data} chooseDate={chooseDate}/>
-      <Calendar targetDate={today}/>
+      <Calendar targetDate={today} />
     </div>
   );
 }
